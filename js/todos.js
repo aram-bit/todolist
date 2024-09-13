@@ -8,6 +8,10 @@ class Todos {
     addBtn.addEventListener("click", (e) => this.addTodo(e));
     this.todos = [];
   }
+  setUpApp(){
+    this.todos=Storage.getTodos();
+    this.createTodoList(this.todos);
+  }
   addTodo(e) {
     e.preventDefault();
     if (!todoInput.value) return null;
