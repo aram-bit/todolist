@@ -2,13 +2,16 @@ const addBtn = document.querySelector(".add-todo-img");
 const todoInput = document.querySelector(".todo-input");
 const todoList = document.querySelector(".todolist");
 const selectFilter = document.querySelector(".filter-todos");
-
+// let filterValue="all";
 import Storage from "./storage.js";
 class Todos {
   constructor() {
     addBtn.addEventListener("click", (e) => this.addTodo(e));
-    selectFilter.addEventListener("change", (e) => this.filterTodos(e));
+    selectFilter.addEventListener("change", (e) => {
+      this.filterValue=e.target.value;
+      this.filterTodos()});
     this.todos = [];
+    this.filterValue="all"
     // this.titles=[];
   }
   setUpApp() {
@@ -26,7 +29,7 @@ class Todos {
     };
     Storage.saveTodo(newTodo);
     this.todos.push(newTodo);
-    this.createTodoList(this.todos);
+    this.filterTodos(this.todos);
   }
   createTodoList(todos) {
     let result = "";
@@ -68,9 +71,9 @@ class Todos {
       btn.addEventListener("click", (e) => this.removeTodo(e))
     );
   }
-  filterTodos(e) {
-    const filter = e.target.value;
-    switch (filter) {
+  filterTodos() {
+    //  filterValue = e.target.value;
+    switch (this.filterValue) {
       case "all": {
         this.createTodoList(this.todos);
         break;
@@ -99,7 +102,7 @@ class Todos {
     const filteredTodos = this.todos.filter((t) => t.id !== parseInt(todoId));
     this.todos = filteredTodos;
     localStorage.setItem("todos", JSON.stringify(filteredTodos));
-    this.createTodoList(filteredTodos);
+    this.filterTodos(filteredTodos);
   }
   checkTodo(e) {
     const todoId = e.target.dataset.id;
@@ -111,8 +114,9 @@ class Todos {
     //   selectedTodoTitle.classList.add("todo_completed");
     //   this.createTodoList(this.todos);
 
-    // }    
-    this.createTodoList(this.todos);
+    // }   
+    this.filterTodos(this.filterTodos) ;
+    // this.createTodoList(this.todos);
     // update storage
   }
 }
