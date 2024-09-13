@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+  }
+  
+  /*  VARIABLES : */
+  :root {
+    --primaryColor: #6d28d9;
+    --secondaryColor: #ede9fe;
+    --mainWhite: #fff;
+    --mainBlack: #222;
+    --mainGrey: #7c7c7c;
+    --secondayGrey: #ccc;
+    --mainSpacing: 0.1rem;
+    --mainTransition: all 0.3s linear;
+    /* --mainRed: #db2777; */
+    --bodyColor: #f6f6f6;
+  }
+  
+  body {
+    color: var(--mainBlack);
+    background-color: var(--bodyColor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  header {
+    min-height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+  .todo-input {
+    width: 300px;
+    padding: 0.5rem;
+    border: 3px solid var(--secondayGrey);
+    border-radius: 12px;
+    outline: 0;
+  }
+  .todo-form {
+    position: relative;
+  }
+  .add-todo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 3px solid var(--secondayGrey);
+    border-radius: 0 12px 12px 0;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+  }
+  .add-todo:hover {
+    background-color: var(--primaryColor);
+  }
+  .add-todo-img {
+    width: 20px;
+    height: 20px;
+  }
+  .todo-check-img,
+  .todo-remove-img {
+    width: 15px;
+    height: 15px;
+  }
+  .filter-todos {
+    padding: 0.5rem;
+    border: 3px solid var(--secondayGrey);
+    border-radius: 12px;
+    outline: 0;
+  }
+  .select {
+    position: relative;
+  }
+  select {
+    -webkit-appearance: none;
+  }
+  .select::after {
+    color: var(--primaryColor);
+    content: "\25BC";
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    pointer-events: none;
+    padding: 2rem;
+  }
+  .todolist{
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2rem;
+  }
+  .todo{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      border:none;
+      border-radius: 15px;
+      width: 300px;
+      padding: 0.5rem;
+      background-color: var(--mainWhite);
+  }
+  .todo_control{
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+  }
+  .todo_control >button{
+      border: none;
+      cursor: pointer;
+  }
+  @media (max-width:600px) {
+      .form-container{
+          flex-direction: column;
+      }
+      .select{
+          margin-bottom: 2.5rem;
+      }
+  }

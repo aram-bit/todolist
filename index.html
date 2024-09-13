@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoList</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>todo list</h1>
+    </header>
+    <section class="container">
+      <div class="form-container">
+        <form class="todo-form">
+          <input type="text" class="todo-input" />
+          <button class="add-todo">
+            <img src="/icons/circle-plus.svg" alt="" class="add-todo-img" />
+          </button>
+        </form>
+        <div class="select">
+          <select class="filter-todos" name="todos">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="uncompleted">Uncompleted</option>
+          </select>
+        </div>
+      </div>
+      <div class="todo-container">
+        <ul class="todolist">
+          <li class="todo">
+            <p class="todo__title">todo #1</p>
+            <span class="todo_control">
+              <p class="todo__createdAt">1402/1/28</p>
+              <button class="todo__check">
+                <img
+                  src="/icons/circle-check.svg"
+                  alt=""
+                  class="todo-check-img"
+                />
+              </button>
+              <button class="todo__remove">
+                <img
+                  src="/icons/trash-can.svg"
+                  alt=""
+                  class="todo-remove-img"
+                />
+              </button>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </body>
+  <script src="/js/app.js" type="module"></script>
+</html>
