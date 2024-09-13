@@ -77,6 +77,7 @@
   .todo-remove-img {
     width: 15px;
     height: 15px;
+    pointer-events: none;
   }
   .filter-todos {
     padding: 0.5rem;
@@ -123,6 +124,10 @@
   .todo_control >button{
       border: none;
       cursor: pointer;
+  }
+  .todo_completed{
+    text-decoration: line-through;
+    opacity: 0.5;
   }
   @media (max-width:600px) {
       .form-container{

@@ -9,6 +9,7 @@ class Todos {
     addBtn.addEventListener("click", (e) => this.addTodo(e));
     selectFilter.addEventListener("change", (e) => this.filterTodos(e));
     this.todos = [];
+    // this.titles=[];
   }
   setUpApp() {
     this.todos = Storage.getTodos();
@@ -31,7 +32,7 @@ class Todos {
     let result = "";
     todos.forEach((todo) => {
       result += ` <li class="todo">
-            <p class="todo__title" data-id=${todo.id}>${todo.title}</p>
+            <p class="todo__title ${todo.isCompleted && "todo_completed"}" data-id=${todo.id}>${todo.title}</p>
             <span class="todo_control">
               <p class="todo__createdAt">${new Date(
                 todo.createdAt
@@ -57,6 +58,12 @@ class Todos {
     todoList.innerHTML = result;
     todoInput.value = "";
     const removeBtns = [...document.querySelectorAll(".todo__remove")];
+    const checkBtns = [...document.querySelectorAll(".todo__check")];
+    // const todosTitles=[...document.querySelectorAll(".todo__title")];
+    // this.titles=todosTitles;
+    checkBtns.forEach((btn) =>
+      btn.addEventListener("click", (e) => this.checkTodo(e))
+    );
     removeBtns.forEach((btn) =>
       btn.addEventListener("click", (e) => this.removeTodo(e))
     );
@@ -90,9 +97,23 @@ class Todos {
   removeTodo(e) {
     const todoId = e.target.dataset.id;
     const filteredTodos = this.todos.filter((t) => t.id !== parseInt(todoId));
-    this.todos=filteredTodos;
-    localStorage.setItem("todos",JSON.stringify(filteredTodos));
+    this.todos = filteredTodos;
+    localStorage.setItem("todos", JSON.stringify(filteredTodos));
     this.createTodoList(filteredTodos);
+  }
+  checkTodo(e) {
+    const todoId = e.target.dataset.id;
+    const selectedTodo = this.todos.find((t) => t.id === parseInt(todoId));
+    selectedTodo.isCompleted = !selectedTodo.isCompleted;
+    localStorage.setItem("todos", JSON.stringify(this.todos));
+    // const selectedTodoTitle=this.titles.find(title=>title.dataset.id==parseInt(todoId));
+    // if(selectedTodo.isCompleted===true){
+    //   selectedTodoTitle.classList.add("todo_completed");
+    //   this.createTodoList(this.todos);
+
+    // }    
+    this.createTodoList(this.todos);
+    // update storage
   }
 }
 export default new Todos();
